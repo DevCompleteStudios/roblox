@@ -178,10 +178,17 @@ local function validateKey(scriptId, callback)
 		end
 
 		local function onSucces()
-			textError.Text = ""
-			textError.Visible = false
-			onClose()
-			callback()
+			local _, fallo = pcall(function()
+				textError.Text = ""
+				textError.Visible = false
+				onClose()
+				callback()
+			end)
+			if fallo then
+				warn("Error inesperado: "..fallo.. " -> Intentando de nuevo..")
+				task.wait(1)
+				onSucces()
+			end
 		end
 
 		local function onLoading()
@@ -233,6 +240,7 @@ local function validateKey(scriptId, callback)
 					end
 					onFinishedIsLoading()
 				elseif data and data.status == 200 then
+					print("El usuario si esta verificado")
 					onSucces()
 				end
 			end)

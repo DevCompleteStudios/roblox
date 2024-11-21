@@ -12,10 +12,8 @@ return function(scriptId, callbackSucces)
 	local send = Instance.new("TextButton")
 	local messageError = Instance.new("TextLabel")
 
-
 	dvs_keysystem.Name = "dvs_key-system"
 	dvs_keysystem.Parent = game:WaitForChild('CoreGui')
-	dvs_keysystem.ResetOnSpawn = false
 	dvs_keysystem.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	size.Name = "size"
@@ -164,7 +162,22 @@ return function(scriptId, callbackSucces)
 
 	-- Scripts:
 
-	local function MAXZMW_fake_script() -- keySystem.key 
+	local function IVBHAGU_fake_script() -- close.LocalScript 
+		local script = Instance.new('LocalScript', close)
+
+		local btn = script.Parent
+		local container = btn.Parent.container
+
+
+		btn.MouseButton1Click:Connect(function()
+			container.Visible = not container.Visible
+		end)
+
+
+
+	end
+	coroutine.wrap(IVBHAGU_fake_script)()
+	local function SJZCB_fake_script() -- keySystem.key 
 		local script = Instance.new('LocalScript', keySystem)
 
 		local keyText = script.Parent
@@ -211,7 +224,7 @@ return function(scriptId, callbackSucces)
 		end
 
 
-		local function getFormatKey()
+		local function getFormatKey():string
 			if keyText.Text == defaultText then
 				return nil
 			else
@@ -284,13 +297,43 @@ return function(scriptId, callbackSucces)
 
 
 	end
-	coroutine.wrap(MAXZMW_fake_script)()
-	local function USZI_fake_script() -- links.links 
+	coroutine.wrap(SJZCB_fake_script)()
+	local function MJOXPXV_fake_script() -- links.links 
 		local script = Instance.new('LocalScript', links)
 
+
+		local links = {
+			youtube = 'https://www.youtube.com/@Heisenberg13133',
+			discord = 'https://discord.gg/xDCakmb24Y',
+			page = 'https://devstudios-store.vercel.app/home'
+		}
+
+
+		local childrens = game.Parent:GetChildren()
+
+
+		local function onCopy(name)
+			local link = links[name]
+			setclipboard(link)
+
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = "Copied successfully";
+				Text = "The link has been copied to the clipboard";
+				Icon = ""; -- URL del ícono, opcional
+				Duration = 5; -- Tiempo en segundos que durará la notificación
+			})
+
+		end
+
+
+		for i,v in pairs(childrens) do
+			if v:IsA('TextButton') then
+				v.MouseButton1Click:Connect(function()
+					onCopy(v.Name)
+				end)
+			end
+		end
+
 	end
-	coroutine.wrap(USZI_fake_script)()
-
+	coroutine.wrap(MJOXPXV_fake_script)()
 end
-
-

@@ -170,23 +170,8 @@ local function validateKey(scriptId, callback)
 		local apiUrl = "https://devstudios.up.railway.app/api/auth/verify-acces-script/"..tostring(scriptId)
 
 
-		local function validateScriptId()
-		end
-
 		local function onClose()
 			slide.Parent:Destroy()
-		end
-
-		local function onSucces()
-			print("1")
-			textError.Text = ""
-			print("2")
-			textError.Visible = false
-			print("3")
-			onClose()
-			print("4")
-			-- callback()
-			print("5")
 		end
 
 		local function onLoading()
@@ -238,7 +223,18 @@ local function validateKey(scriptId, callback)
 					end
 					onFinishedIsLoading()
 				elseif data and data.status == 200 then
-					local _, fallo = pcall(onSucces)
+					print("Succes")
+					local _, fallo = pcall(function ()
+						print("1")
+						textError.Text = ""
+						print("2")
+						textError.Visible = false
+						print("3")
+						onClose()
+						print("4")
+						-- callback()
+						print("5")
+					end)
 					if fallo then
 						print("QUE PASA: "..fallo)
 					end
@@ -302,7 +298,6 @@ return function(scriptId, callback)
 	else
 		players.PlayerAdded:Connect(function(player)
 			if player == players.LocalPlayer then
-				print("El usuario se unio correctamente")
 				validateKey(scriptId, callback)
 			end
 		end)

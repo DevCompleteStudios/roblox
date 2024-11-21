@@ -1,312 +1,296 @@
-local function validateKey(scriptId, callback)
-	local DevStudiosAuth = Instance.new("ScreenGui")
-	local slide = Instance.new("Frame")
-	local btn = Instance.new("TextButton")
+return function(scriptId, callbackSucces)
+	local dvs_keysystem = Instance.new("ScreenGui")
+	local size = Instance.new("Frame")
+	local close = Instance.new("TextButton")
 	local container = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
-	local auth = Instance.new("Frame")
-	local authTitle = Instance.new("TextLabel")
-	local textKey = Instance.new("TextBox")
-	local btn_2 = Instance.new("TextButton")
-	local err = Instance.new("TextLabel")
+	local keySystem = Instance.new("TextBox")
+	local links = Instance.new("Frame")
+	local discord = Instance.new("TextButton")
+	local youtube = Instance.new("TextButton")
+	local page = Instance.new("TextButton")
+	local send = Instance.new("TextButton")
+	local messageError = Instance.new("TextLabel")
 
 
-	DevStudiosAuth.Name = "DevStudiosAuth"
-	DevStudiosAuth.ResetOnSpawn = false
-	DevStudiosAuth.DisplayOrder = 999
-	DevStudiosAuth.Parent = game.CoreGui
-	DevStudiosAuth.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	dvs_keysystem.Name = "dvs_key-system"
+	dvs_keysystem.Parent = game:WaitForChild('CoreGui')
+	dvs_keysystem.ResetOnSpawn = false
+	dvs_keysystem.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-	slide.Name = "slide"
-	slide.Parent = DevStudiosAuth
-	slide.AnchorPoint = Vector2.new(0.5, 0.5)
-	slide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	slide.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	slide.BorderSizePixel = 0
-	slide.Position = UDim2.new(0.5, 0, 0.200000003, 0)
-	slide.Size = UDim2.new(0.5, 0, 0.0399999991, 0)
+	size.Name = "size"
+	size.Parent = dvs_keysystem
+	size.AnchorPoint = Vector2.new(0.5, 0.5)
+	size.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	size.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	size.BorderSizePixel = 0
+	size.Position = UDim2.new(0.5, 0, 0.25, 0)
+	size.Size = UDim2.new(0.5, 0, 0.0350000001, 0)
 
-	btn.Name = "btn"
-	btn.Parent = slide
-	btn.AnchorPoint = Vector2.new(1, 0.5)
-	btn.BackgroundColor3 = Color3.fromRGB(0, 38, 255)
-	btn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	btn.BorderSizePixel = 0
-	btn.Position = UDim2.new(1, 0, 0.5, 0)
-	btn.Size = UDim2.new(0.0700000003, 0, 1, 0)
-	btn.Font = Enum.Font.SourceSans
-	btn.Text = ""
-	btn.TextColor3 = Color3.fromRGB(0, 0, 0)
-	btn.TextSize = 14.000
+	close.Name = "close"
+	close.Parent = size
+	close.AnchorPoint = Vector2.new(1, 0.5)
+	close.BackgroundColor3 = Color3.fromRGB(26, 255, 0)
+	close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	close.BorderSizePixel = 0
+	close.Position = UDim2.new(1, 0, 0.5, 0)
+	close.Size = UDim2.new(0.0599999987, 0, 1, 0)
+	close.Font = Enum.Font.SourceSans
+	close.Text = ""
+	close.TextColor3 = Color3.fromRGB(0, 0, 0)
+	close.TextSize = 14.000
 
 	container.Name = "container"
-	container.Parent = slide
+	container.Parent = size
 	container.AnchorPoint = Vector2.new(0.5, 0)
 	container.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 	container.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	container.BorderSizePixel = 0
 	container.Position = UDim2.new(0.5, 0, 1, 0)
-	container.Size = UDim2.new(1, 0, 14, 0)
+	container.Size = UDim2.new(1, 0, 12, 0)
 
 	title.Name = "title"
 	title.Parent = container
-	title.AnchorPoint = Vector2.new(0.5, 0)
-	title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	title.BorderColor3 = Color3.fromRGB(62, 3, 255)
-	title.BorderSizePixel = 2
-	title.Position = UDim2.new(0.5, 0, 0.0500000007, 0)
-	title.Size = UDim2.new(0.995000005, 0, 0.0799999982, 0)
-	title.Font = Enum.Font.Unknown
-	title.Text = "DevComplet_Studios - Key System"
+	title.AnchorPoint = Vector2.new(0.5, 0.5)
+	title.BackgroundColor3 = Color3.fromRGB(52, 0, 68)
+	title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.5, 0, 0.100000001, 0)
+	title.Size = UDim2.new(1, 0, 0.100000001, 0)
+	title.Font = Enum.Font.SourceSansBold
+	title.Text = "Key System - DevCompleteStudios"
 	title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	title.TextScaled = true
 	title.TextSize = 14.000
 	title.TextWrapped = true
 
-	auth.Name = "auth"
-	auth.Parent = container
-	auth.AnchorPoint = Vector2.new(0.5, 0.5)
-	auth.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
-	auth.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	auth.BorderSizePixel = 0
-	auth.Position = UDim2.new(0.5, 0, 0.600000024, 0)
-	auth.Size = UDim2.new(1, 0, 0.449999988, 0)
+	keySystem.Name = "keySystem"
+	keySystem.Parent = container
+	keySystem.AnchorPoint = Vector2.new(0.5, 0.5)
+	keySystem.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+	keySystem.BorderColor3 = Color3.fromRGB(255, 255, 255)
+	keySystem.Position = UDim2.new(0.5, 0, 0.300000012, 0)
+	keySystem.Size = UDim2.new(0.99000001, 0, 0.100000001, 0)
+	keySystem.Font = Enum.Font.SourceSansBold
+	keySystem.Text = ""
+	keySystem.TextColor3 = Color3.fromRGB(255, 255, 255)
+	keySystem.TextScaled = true
+	keySystem.TextSize = 14.000
+	keySystem.TextWrapped = true
 
-	authTitle.Name = "authTitle"
-	authTitle.Parent = auth
-	authTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	authTitle.BackgroundTransparency = 1.000
-	authTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	authTitle.BorderSizePixel = 0
-	authTitle.Position = UDim2.new(0, 0, 0.0199999996, 0)
-	authTitle.Size = UDim2.new(1, 0, 0.200000003, 0)
-	authTitle.Font = Enum.Font.Unknown
-	authTitle.Text = "Enter your key:"
-	authTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-	authTitle.TextScaled = true
-	authTitle.TextSize = 14.000
-	authTitle.TextWrapped = true
+	links.Name = "links"
+	links.Parent = container
+	links.AnchorPoint = Vector2.new(0.5, 0.5)
+	links.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	links.BorderColor3 = Color3.fromRGB(0, 81, 255)
+	links.BorderSizePixel = 2
+	links.Position = UDim2.new(0.5, 0, 0.870000005, 0)
+	links.Size = UDim2.new(0.995000005, 0, 0.25, 0)
 
-	textKey.Name = "textKey"
-	textKey.Parent = auth
-	textKey.AnchorPoint = Vector2.new(0.5, 0.5)
-	textKey.BackgroundColor3 = Color3.fromRGB(59, 59, 59)
-	textKey.BorderColor3 = Color3.fromRGB(0, 26, 255)
-	textKey.Position = UDim2.new(0.5, 0, 0.5, 0)
-	textKey.Size = UDim2.new(0.995000005, 0, 0.300000012, 0)
-	textKey.Font = Enum.Font.SourceSans
-	textKey.Text = "Ex. abc1-abc2-abc3-abc4"
-	textKey.TextColor3 = Color3.fromRGB(162, 162, 162)
-	textKey.TextScaled = true
-	textKey.TextSize = 14.000
-	textKey.TextWrapped = true
+	discord.Name = "discord"
+	discord.Parent = links
+	discord.AnchorPoint = Vector2.new(0.5, 0.5)
+	discord.BackgroundColor3 = Color3.fromRGB(0, 17, 255)
+	discord.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	discord.BorderSizePixel = 0
+	discord.Position = UDim2.new(0.5, 0, 0.5, 0)
+	discord.Size = UDim2.new(0.200000003, 0, 0.400000006, 0)
+	discord.Font = Enum.Font.SourceSansBold
+	discord.Text = "Discord"
+	discord.TextColor3 = Color3.fromRGB(255, 255, 255)
+	discord.TextScaled = true
+	discord.TextSize = 14.000
+	discord.TextWrapped = true
 
-	btn_2.Name = "btn"
-	btn_2.Parent = auth
-	btn_2.AnchorPoint = Vector2.new(0.5, 0.5)
-	btn_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	btn_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	btn_2.BorderSizePixel = 0
-	btn_2.Position = UDim2.new(0.5, 0, 0.850000024, 0)
-	btn_2.Size = UDim2.new(0.400000006, 0, 0.200000003, 0)
-	btn_2.Font = Enum.Font.SourceSans
-	btn_2.Text = "Check Key"
-	btn_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-	btn_2.TextScaled = true
-	btn_2.TextSize = 14.000
-	btn_2.TextWrapped = true
+	youtube.Name = "youtube"
+	youtube.Parent = links
+	youtube.AnchorPoint = Vector2.new(0.5, 0.5)
+	youtube.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+	youtube.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	youtube.BorderSizePixel = 0
+	youtube.Position = UDim2.new(0.200000003, 0, 0.5, 0)
+	youtube.Size = UDim2.new(0.200000003, 0, 0.400000006, 0)
+	youtube.Font = Enum.Font.SourceSansBold
+	youtube.Text = "Youtube"
+	youtube.TextColor3 = Color3.fromRGB(255, 255, 255)
+	youtube.TextScaled = true
+	youtube.TextSize = 14.000
+	youtube.TextWrapped = true
 
-	err.Name = "err"
-	err.Parent = container
-	err.AnchorPoint = Vector2.new(0.5, 0.5)
-	err.BackgroundColor3 = Color3.fromRGB(186, 0, 6)
-	err.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	err.BorderSizePixel = 0
-	err.Position = UDim2.new(0.5, 0, 0.25, 0)
-	err.Size = UDim2.new(1, 0, 0.100000001, 0)
-	err.Visible = false
-	err.Font = Enum.Font.SourceSans
-	err.Text = ""
-	err.TextColor3 = Color3.fromRGB(255, 255, 255)
-	err.TextScaled = true
-	err.TextSize = 14.000
-	err.TextWrapped = true
+	page.Name = "page"
+	page.Parent = links
+	page.AnchorPoint = Vector2.new(0.5, 0.5)
+	page.BackgroundColor3 = Color3.fromRGB(165, 0, 116)
+	page.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	page.BorderSizePixel = 0
+	page.Position = UDim2.new(0.800000012, 0, 0.5, 0)
+	page.Size = UDim2.new(0.200000003, 0, 0.400000006, 0)
+	page.Font = Enum.Font.SourceSansBold
+	page.Text = "Buy script"
+	page.TextColor3 = Color3.fromRGB(255, 255, 255)
+	page.TextScaled = true
+	page.TextSize = 14.000
+	page.TextWrapped = true
+
+	send.Name = "send"
+	send.Parent = container
+	send.AnchorPoint = Vector2.new(0.5, 0.5)
+	send.BackgroundColor3 = Color3.fromRGB(34, 255, 0)
+	send.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	send.BorderSizePixel = 0
+	send.Position = UDim2.new(0.5, 0, 0.449999988, 0)
+	send.Size = UDim2.new(0.400000006, 0, 0.100000001, 0)
+	send.Font = Enum.Font.SourceSans
+	send.Text = "Loading..."
+	send.TextColor3 = Color3.fromRGB(0, 0, 0)
+	send.TextScaled = true
+	send.TextSize = 14.000
+	send.TextWrapped = true
+
+	messageError.Name = "messageError"
+	messageError.Parent = container
+	messageError.AnchorPoint = Vector2.new(0.5, 0.5)
+	messageError.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	messageError.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	messageError.BorderSizePixel = 0
+	messageError.Position = UDim2.new(0.5, 0, 0.600000024, 0)
+	messageError.Size = UDim2.new(1, 0, 0.100000001, 0)
+	messageError.Visible = false
+	messageError.Font = Enum.Font.Unknown
+	messageError.TextColor3 = Color3.fromRGB(255, 255, 255)
+	messageError.TextScaled = true
+	messageError.TextSize = 14.000
+	messageError.TextWrapped = true
 
 	-- Scripts:
 
-	local function SPTLRP_fake_script() -- btn.LocalScript 
-		local script = Instance.new('LocalScript', btn)
+	local function MAXZMW_fake_script() -- keySystem.key 
+		local script = Instance.new('LocalScript', keySystem)
 
-		local btn = script.Parent
-		local slide = btn.Parent
-		local container = slide.container
+		local keyText = script.Parent
+		local btnValidateKey = keyText.Parent.send
+		local messageError = keyText.Parent.messageError
 
+		local defaultText = "Ex. abc1-abc2-abc3-abc4-abc5"
+		local httpService = game:GetService('HttpService')
+		local player = game:GetService('Players').LocalPlayer
+		local userId = player.UserId
 
-		btn.MouseButton1Click:Connect(function()
-			container.Visible = not container.Visible
-		end)
-
-
-	end
-	coroutine.wrap(SPTLRP_fake_script)()
-	local function PPQMBL_fake_script() -- DevStudiosAuth.LocalScript 
-		local script = Instance.new('LocalScript', DevStudiosAuth)
-
-		local userId = game:GetService('Players').LocalPlayer.UserId
-		local HttpService = game:GetService('HttpService')
-		local slide = script.Parent:WaitForChild('slide')
-		local textError = slide:WaitForChild('container'):WaitForChild('err')
-		local btn = slide:WaitForChild('container'):WaitForChild('auth'):WaitForChild('btn')
+		local url = 'https://devstudios.up.railway.app/api/auth/verify-acces-script/'..scriptId
+		local attempts = 0
+		local maxAttempts = 3
 		local isLoading = false
-		local key = nil
-		local textKey = slide:WaitForChild('container'):WaitForChild('auth'):WaitForChild('textKey')
-		local currentAttemps = 0
-		local maxAttemps = 5
-
-		local attempsIntentKey = 0		
-		local maxAttempsIntentKey = 5
-
-		local textKeyDefaultText = "Ex. abc1-abc2-abc3-abc4"
-		local apiUrl = "https://devstudios.up.railway.app/api/auth/verify-acces-script/"..tostring(scriptId)
 
 
-		local function validateScriptId()
-		end
-
-		local function onClose()
-			slide.Parent:Destroy()
-		end
-
-		local function onLoading()
-			btn.Text = "Loading..."
-			isLoading = true
-		end
-
-		local function onFinishedIsLoading()
-			btn.Text = "Check Key"
-			isLoading = false
-		end
-
-		local function onError( text )
-			textError.Text = text
-			textError.Visible = true
-			textKey.Text = textKeyDefaultText
-		end
-		
-		local function onSucces()
-			local _, fallo = pcall(function()
-				textError.Text = ""
-				textError.Visible = false
-				onClose()
-				callback()
-			end)
-			if fallo then
-				warn("Error inesperado: "..fallo.. " -> Intentando de nuevo..")
-				task.wait(1)
-				onSucces()
-				onError("Your key was verified but there was an unexpected error, please contact support.")
-			end
-		end
-		
-
-		local function httpClient()
+		local httpRequest = function(key)
 			local response = request(
 				{
-					Url = apiUrl,
+					Url = url,
 					Method = "POST",
 					Headers = {
 						["Content-Type"] = "application/json"
 					},
-					Body = HttpService:JSONEncode({key = key, robloxId = userId})
+					Body = httpService:JSONEncode({key = key, robloxId = userId})
 				}
 			)
 
-			return HttpService:JSONDecode(response.Body)
+			return httpService:JSONDecode(response.Body)
 		end
 
-		local function onCheck()
+
+		local function onSucces()
 			local _, fallo = pcall(function()
-				onLoading()
-
-				-- hacemos la peticion HTTP
-				local data = httpClient()
-				local xd = HttpService:JSONEncode(data)
-
-				print(xd)
-
-				if data and data.err then
-					if type(data.err) == 'string' then
-						onError(data.err)
-					else
-						onError(data.err[1])
-					end
-					onFinishedIsLoading()
-				elseif data and data.status == 200 then
-					print("El usuario si esta verificado")
-					onSucces()
-				end
+				keyText.Parent.Parent.Parent:Destroy()
+				callbackSucces()
 			end)
 			if fallo then
-				if attempsIntentKey <= maxAttempsIntentKey then
-					attempsIntentKey = attempsIntentKey + 1
-					print("Fallo intento: "..tostring(attempsIntentKey))
-					task.wait(1)
-					onCheck()
-				else
-					print(fallo)
-					onError("Enter key")
-					onFinishedIsLoading()
-				end
+				task.wait(1)
+				print("Error al iniciar: "..fallo)
+				callbackSucces()
 			end
 		end
+
+
+		local function getFormatKey()
+			if keyText.Text == defaultText then
+				return nil
+			else
+				return keyText.Text
+			end
+		end
+
+
+		local function handleError(message)
+			messageError.Text = message
+			messageError.Visible = true
+			keyText.Text = defaultText
+		end
+
+
+		local function onLoading()
+			isLoading = true
+			btnValidateKey.Text = "Loading..."
+		end
+
+		local function onFinishLoading()
+			isLoading = false
+			btnValidateKey.Text = "Validate key"
+		end
+
+
+		local function verifyAcces(key)
+			onLoading()
+			local response = httpRequest(key)
+
+			if response.err then
+				if type(response.err) == 'string' then
+					handleError(response.err)
+				else
+					handleError(response.err[1])
+				end
+			elseif response.status == 200 or response.data then
+				print("Usuario loggeado correctamente!")
+				onSucces()
+			else
+				print("WTF? = "..httpService:JSONEncode(response))
+				handleError("Unexpected error, please contact support.")
+			end
+			onFinishLoading()
+		end
+
 
 		local function onClick()
+			local key = getFormatKey()
+
 			if isLoading then
 				return
-			elseif currentAttemps >= maxAttemps then
-				onError("You have exceeded the limit of attempts, please come back later")
-				onLoading()
-				return
-			elseif textKey.Text == textKeyDefaultText or #textKey.Text <= 10 or #textKey.Text >= 60 then
-				onError("Enter a valid key")
-				return
 			end
 
-			currentAttemps = currentAttemps + 1
-			onCheck()
+			if not key or #key <= 10 or #key >= 100 then
+				handleError("Key is not valid")
+				return
+			end
+			if attempts >= maxAttempts then
+				handleError("You have exceeded the maximum number of attempts, please try again later")
+				return
+			end
+			attempts = attempts + 1
+
+			verifyAcces(key)
 		end
 
-		local function onChangeKeyValue()
-			key = textKey.Text
-		end
+		btnValidateKey.MouseButton1Click:Connect(onClick)
+		verifyAcces(nil)
 
-		game.Players.LocalPlayer.Idled:Connect(function()
-			game:service'VirtualUser':CaptureController()
-			game:service'VirtualUser':ClickButton2(Vector2.new())
-		end)
-		textKey:GetPropertyChangedSignal("Text"):Connect(onChangeKeyValue)
-		btn.MouseButton1Click:Connect(onClick)	
 
-		onCheck()
 	end
-	coroutine.wrap(PPQMBL_fake_script)()
+	coroutine.wrap(MAXZMW_fake_script)()
+	local function USZI_fake_script() -- links.links 
+		local script = Instance.new('LocalScript', links)
+
+	end
+	coroutine.wrap(USZI_fake_script)()
+
 end
 
 
-
-
-
-return function(scriptId, callback)
-	local players = game:GetService('Players')
-	
-	if players.LocalPlayer then
-		validateKey(scriptId, callback)
-	else
-		players.PlayerAdded:Connect(function(player)
-			if player == players.LocalPlayer then
-				print("El usuario se unio correctamente")
-				validateKey(scriptId, callback)
-			end
-		end)
-	end
-end

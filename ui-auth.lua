@@ -337,3 +337,4 @@ return function(scriptId, callbackSucces)
 	end
 	coroutine.wrap(MJOXPXV_fake_script)()
 end
+

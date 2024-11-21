@@ -226,13 +226,11 @@ local function validateKey(scriptId, callback)
 					print("Succes")
 					local _, fallo = pcall(function ()
 						print("1")
-						textError.Text = ""
 						print("2")
-						textError.Visible = false
 						print("3")
 						onClose()
 						print("4")
-						-- callback()
+						callback()
 						print("5")
 					end)
 					if fallo then

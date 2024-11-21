@@ -309,7 +309,7 @@ return function(scriptId, callbackSucces)
 		}
 
 
-		local childrens = game.Parent:GetChildren()
+		local childrens = script.Parent:GetChildren()
 
 
 		local function onCopy(name)

@@ -177,20 +177,6 @@ local function validateKey(scriptId, callback)
 			slide.Parent:Destroy()
 		end
 
-		local function onSucces()
-			local _, fallo = pcall(function()
-				textError.Text = ""
-				textError.Visible = false
-				onClose()
-				callback()
-			end)
-			if fallo then
-				warn("Error inesperado: "..fallo.. " -> Intentando de nuevo..")
-				task.wait(1)
-				onSucces()
-			end
-		end
-
 		local function onLoading()
 			btn.Text = "Loading..."
 			isLoading = true
@@ -206,6 +192,22 @@ local function validateKey(scriptId, callback)
 			textError.Visible = true
 			textKey.Text = textKeyDefaultText
 		end
+		
+		local function onSucces()
+			local _, fallo = pcall(function()
+				textError.Text = ""
+				textError.Visible = false
+				onClose()
+				callback()
+			end)
+			if fallo then
+				warn("Error inesperado: "..fallo.. " -> Intentando de nuevo..")
+				task.wait(1)
+				onSucces()
+				onError("Your key was verified but there was an unexpected error, please contact support.")
+			end
+		end
+		
 
 		local function httpClient()
 			local response = request(

@@ -1,4 +1,18 @@
-local function validateKey(scriptId, callback)
+return function(scriptId, callback)
+	-- local players = game:GetService('Players')
+
+	-- if players.LocalPlayer then
+	-- 	validateKey(scriptId, callback)
+	-- else
+	-- 	players.PlayerAdded:Connect(function(player)
+	-- 		if player == players.LocalPlayer then
+	-- 			print("El usuario se unio correctamente")
+	-- 			validateKey(scriptId, callback)
+	-- 		end
+	-- 	end)
+	-- end
+	print("Esta otra forma deberia funcionar?")
+
 	local DevStudiosAuth = Instance.new("ScreenGui")
 	local slide = Instance.new("Frame")
 	local btn = Instance.new("TextButton")
@@ -174,6 +188,13 @@ local function validateKey(scriptId, callback)
 			slide.Parent:Destroy()
 		end
 
+		local function onSucces()
+			textError.Text = ""
+			textError.Visible = false
+			onClose()
+			callback()
+		end
+
 		local function onLoading()
 			btn.Text = "Loading..."
 			isLoading = true
@@ -223,19 +244,7 @@ local function validateKey(scriptId, callback)
 					end
 					onFinishedIsLoading()
 				elseif data and data.status == 200 then
-					print("Succes 2 xd")
-					local _, fallo = pcall(function ()
-						print("1")
-						print("2")
-						print("3")
-						--onClose()
-						print("4")
-						callback()
-						print("5")
-					end)
-					if fallo then
-						print("QUE PASA: "..fallo)
-					end
+					pcall(onSucces)
 				end
 			end)
 			if fallo then
@@ -277,7 +286,7 @@ local function validateKey(scriptId, callback)
 			game:service'VirtualUser':ClickButton2(Vector2.new())
 		end)
 		textKey:GetPropertyChangedSignal("Text"):Connect(onChangeKeyValue)
-		btn.MouseButton1Click:Connect(onClick)
+		btn.MouseButton1Click:Connect(onClick)	
 
 		onCheck()
 	end
@@ -287,18 +296,3 @@ end
 
 
 
-
-return function(scriptId, callback)
-	local players = game:GetService('Players')
-
-	if players.LocalPlayer then
-		validateKey(scriptId, callback)
-	else
-		players.PlayerAdded:Connect(function(player)
-			if player == players.LocalPlayer then
-				validateKey(scriptId, callback)
-			end
-		end)
-	end
-
-end

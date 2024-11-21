@@ -223,7 +223,7 @@ local function validateKey(scriptId, callback)
 					end
 					onFinishedIsLoading()
 				elseif data and data.status == 200 then
-					print("Succes")
+					print("Succes xd")
 					local _, fallo = pcall(function ()
 						print("1")
 						print("2")

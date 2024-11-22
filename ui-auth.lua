@@ -1,3 +1,4 @@
+wait(1)
 return function(scriptId, callbackSucces)
 	local dvs_keysystem = Instance.new("ScreenGui")
 	local size = Instance.new("Frame")

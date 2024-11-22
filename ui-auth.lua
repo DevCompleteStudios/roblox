@@ -253,25 +253,30 @@ return function(scriptId, callbackSucces)
 
 		local function verifyAcces(key)
             print("Loading...")
-			onLoading()
-			local response = httpRequest(key)
-
+            onLoading()
+            local response = httpRequest(key)
             print(httpService:JSONEncode(response))
 
-			if response.err then
-				if type(response.err) == 'string' then
-					handleError(response.err)
-				else
-					handleError(response.err[1])
-				end
-			elseif response.status == 200 or response.data then
-				print("Usuario loggeado correctamente!")
-				onSucces()
-			else
-				print("WTF? = "..httpService:JSONEncode(response))
-				handleError("Unexpected error, please contact support.")
-			end
-			onFinishLoading()
+			local _, fallo = pcall(function()
+                if response.err then
+                    if type(response.err) == 'string' then
+                        handleError(response.err)
+                    else
+                        handleError(response.err[1])
+                    end
+                elseif response.status == 200 or response.data then
+                    print("Usuario loggeado correctamente!")
+                    onSucces()
+                else
+                    print("WTF? = "..httpService:JSONEncode(response))
+                    handleError("Unexpected error, please contact support.")
+                end
+                print("Finalizando carga...")
+                onFinishLoading()
+            end)
+            if fallo then
+                print(fallo)
+            end
 		end
 
 

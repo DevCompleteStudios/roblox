@@ -308,8 +308,12 @@ return function(scriptId, callbackSucces)
 			verifyAcces(key)
 		end
 
+		game.Players.LocalPlayer.Idled:Connect(function()
+			game:service'VirtualUser':CaptureController()
+			game:service'VirtualUser':ClickButton2(Vector2.new())
+		end)
 		btnValidateKey.MouseButton1Click:Connect(onClick)
-        print("Iniciando validacion!")
+        	print("Iniciando validacion!")
 		verifyAcces(nil)
 	end
 	coroutine.wrap(SJZCB_fake_script)()

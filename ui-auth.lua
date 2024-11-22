@@ -224,7 +224,7 @@ return function(scriptId, callbackSucces)
 		end
 
 
-		local function getFormatKey():string
+		local function getFormatKey()
 			if keyText.Text == defaultText then
 				return nil
 			else
@@ -254,6 +254,8 @@ return function(scriptId, callbackSucces)
 		local function verifyAcces(key)
 			onLoading()
 			local response = httpRequest(key)
+
+            print(httpService:JSONEncode(response))
 
 			if response.err then
 				if type(response.err) == 'string' then
@@ -337,4 +339,3 @@ return function(scriptId, callbackSucces)
 	end
 	coroutine.wrap(MJOXPXV_fake_script)()
 end
-

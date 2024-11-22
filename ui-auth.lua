@@ -1,4 +1,3 @@
-wait(1)
 return function(scriptId, callbackSucces)
 	local dvs_keysystem = Instance.new("ScreenGui")
 	local size = Instance.new("Frame")
@@ -220,7 +219,7 @@ return function(scriptId, callbackSucces)
 			if fallo then
 				task.wait(1)
 				print("Error al iniciar: "..fallo)
-				callbackSucces()
+				onSucces()
 			end
 		end
 
@@ -252,12 +251,7 @@ return function(scriptId, callbackSucces)
 		end
 
 
-		local function verifyAcces(key)
-            print("Loading...")
-            onLoading()
-            local response = httpRequest(key)
-            print(httpService:JSONEncode(response))
-
+		local function showStatus(response)
 			local _, fallo = pcall(function()
                 if response.err then
                     if type(response.err) == 'string' then
@@ -276,8 +270,21 @@ return function(scriptId, callbackSucces)
                 onFinishLoading()
             end)
             if fallo then
+				task.wait(1)
                 print(fallo)
+				print("Intentando de nuevo")
+				showStatus(response)
             end
+		end
+
+
+		local function verifyAcces(key)
+            print("Loading...")
+            onLoading()
+            local response = httpRequest(key)
+            print(httpService:JSONEncode(response))
+
+			showStatus(response)
 		end
 
 

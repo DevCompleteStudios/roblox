@@ -252,6 +252,7 @@ return function(scriptId, callbackSucces)
 
 
 		local function verifyAcces(key)
+            print("Loading...")
 			onLoading()
 			local response = httpRequest(key)
 
@@ -295,9 +296,8 @@ return function(scriptId, callbackSucces)
 		end
 
 		btnValidateKey.MouseButton1Click:Connect(onClick)
+        print("Iniciando validacion!")
 		verifyAcces(nil)
-
-
 	end
 	coroutine.wrap(SJZCB_fake_script)()
 	local function MJOXPXV_fake_script() -- links.links 

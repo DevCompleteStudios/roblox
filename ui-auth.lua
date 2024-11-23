@@ -279,12 +279,17 @@ local onKey = function(scriptId, callbackSucces)
 
 
 		local function verifyAcces(key)
-            print("Loading...")
-            onLoading()
-            local response = httpRequest(key)
-            print(httpService:JSONEncode(response))
+            local _, fallo = pcall(function ()
+				print("Loading...")
+				onLoading()
+				local response = httpRequest(key)
+				print(httpService:JSONEncode(response))
 
-			showStatus(response)
+				showStatus(response)
+			end)
+			if fallo then
+				verifyAcces(key)
+			end
 		end
 
 
@@ -373,4 +378,3 @@ return function(scriptId, callback)
 		end)
 	end
 end
-

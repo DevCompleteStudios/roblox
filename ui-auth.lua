@@ -1,4 +1,4 @@
-return function(scriptId, callbackSucces)
+local onKey = function(scriptId, callbackSucces)
 	local dvs_keysystem = Instance.new("ScreenGui")
 	local size = Instance.new("Frame")
 	local close = Instance.new("TextButton")
@@ -356,3 +356,21 @@ return function(scriptId, callbackSucces)
 	end
 	coroutine.wrap(MJOXPXV_fake_script)()
 end
+
+
+return function(scriptId, callback)
+	task.wait(0.3)
+	local players = game:GetService('Players')
+
+	if players.LocalPlayer then
+		onKey(scriptId, callback)
+	else
+		players.PlayerAdded:Connect(function(player)
+			if player == players.LocalPlayer then
+				print("El usuario se unio correctamente")
+				onKey(scriptId, callback)
+			end
+		end)
+	end
+end
+

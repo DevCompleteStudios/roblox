@@ -1582,6 +1582,34 @@ UICorner.CornerRadius = UDim.new(0.200000003, 0)
 UICorner.Parent = tex
 
 
+local function UNVFAL_fake_script() -- slide.logic 
+	local script = Instance.new('LocalScript', slide)
+
+	local slide = script.Parent
+	local onClose = slide:WaitForChild('onClose')
+	local onSize = slide:WaitForChild('onSize')
+	local container = slide:WaitForChild('container')
+
+
+	slide.Draggable = true
+	slide.Active = true
+
+
+	local function closeWindow()
+		slide.Parent:Destroy()
+	end
+
+	local function sizeWindow()
+		container.Visible = not container.Visible
+	end
+
+
+
+	onClose.MouseButton1Click:Connect(closeWindow)
+	onSize.MouseButton1Click:Connect(sizeWindow)
+end
+
+UNVFAL_fake_script()
 
 
 

@@ -690,11 +690,6 @@ local validations = {
 }
 
 
-local components = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('components'))
-local logic = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('logic'))
-
-
-
 
 local library = {
 
@@ -1269,7 +1264,6 @@ return {
 --		task.wait(0.1)
 --	end
 --end)
-
 
 
 

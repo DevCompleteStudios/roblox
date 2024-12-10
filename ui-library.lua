@@ -6,56 +6,125 @@ local onSize = Instance.new("TextButton")
 local container = Instance.new("Frame")
 local navbar = Instance.new("ScrollingFrame")
 local order = Instance.new("UIListLayout")
-local autoFarm = Instance.new("TextButton")
 local separador = Instance.new("Frame")
 local separadorFinal = Instance.new("Frame")
 local menus = Instance.new("Frame")
-local autoFarm_2 = Instance.new("ScrollingFrame")
-local order_2 = Instance.new("UIListLayout")
-local separador_2 = Instance.new("Frame")
-local separadorFinal_2 = Instance.new("Frame")
-local option = Instance.new("Frame")
-local title_2 = Instance.new("TextLabel")
-local btn = Instance.new("TextButton")
-local border = Instance.new("UICorner")
-local circle = Instance.new("Frame")
-local border_2 = Instance.new("UICorner")
-local button = Instance.new("Frame")
-local title_3 = Instance.new("TextLabel")
-local event = Instance.new("Frame")
-local border_3 = Instance.new("UICorner")
-local click = Instance.new("TextButton")
-local border_4 = Instance.new("UICorner")
-local slider = Instance.new("Frame")
-local title_4 = Instance.new("TextLabel")
-local slide_2 = Instance.new("Frame")
-local border_5 = Instance.new("UICorner")
-local btn_2 = Instance.new("TextButton")
-local border_6 = Instance.new("UICorner")
-local value = Instance.new("TextLabel")
-local input = Instance.new("Frame")
-local title_5 = Instance.new("TextLabel")
-local value_2 = Instance.new("Frame")
-local border_7 = Instance.new("UICorner")
-local text = Instance.new("TextBox")
-local border_8 = Instance.new("UICorner")
-local options = Instance.new("Frame")
-local texts = Instance.new("Frame")
-local on = Instance.new("TextLabel")
-local off = Instance.new("TextLabel")
-local values = Instance.new("Frame")
-local on_2 = Instance.new("ScrollingFrame")
-local off_2 = Instance.new("ScrollingFrame")
-local userList = Instance.new("Frame")
-local texts_2 = Instance.new("Frame")
-local currentUser = Instance.new("TextLabel")
-local totalUsers = Instance.new("TextLabel")
-local users = Instance.new("ScrollingFrame")
-local userName = Instance.new("TextButton")
-local order_3 = Instance.new("UIListLayout")
-local tex = Instance.new("TextLabel")
-local UICorner = Instance.new("UICorner")
 
+ui_library.Name = "ui_library"
+ui_library.Parent = game.CoreGui
+ui_library.ResetOnSpawn = false
+ui_library.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+slide.Name = "slide"
+slide.Parent = ui_library
+slide.AnchorPoint = Vector2.new(0.5, 0.5)
+slide.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+slide.BackgroundTransparency = 0.600
+slide.BorderColor3 = Color3.fromRGB(0, 0, 0)
+slide.BorderSizePixel = 0
+slide.Position = UDim2.new(0.5, 0, 0.200000003, 0)
+slide.Size = UDim2.new(0.349999994, 0, 0.0350000001, 0)
+
+title.Name = "title"
+title.Parent = slide
+title.AnchorPoint = Vector2.new(0, 0.5)
+title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+title.BackgroundTransparency = 1.000
+title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+title.BorderSizePixel = 0
+title.Position = UDim2.new(0.00999999978, 0, 0.5, 0)
+title.Size = UDim2.new(0.400000006, 0, 0.800000012, 0)
+title.Font = Enum.Font.Unknown
+title.Text = "DevComplete Studios"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextScaled = true
+title.TextSize = 14.000
+title.TextWrapped = true
+title.TextXAlignment = Enum.TextXAlignment.Left
+
+onClose.Name = "onClose"
+onClose.Parent = slide
+onClose.AnchorPoint = Vector2.new(1, 0.5)
+onClose.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+onClose.BackgroundTransparency = 0.500
+onClose.BorderColor3 = Color3.fromRGB(0, 0, 0)
+onClose.BorderSizePixel = 0
+onClose.Position = UDim2.new(0.980000019, 0, 0.5, 0)
+onClose.Size = UDim2.new(0.0549999997, 0, 1, 0)
+onClose.Font = Enum.Font.Roboto
+onClose.Text = "X"
+onClose.TextColor3 = Color3.fromRGB(255, 255, 255)
+onClose.TextScaled = true
+onClose.TextSize = 14.000
+onClose.TextWrapped = true
+
+onSize.Name = "onSize"
+onSize.Parent = slide
+onSize.AnchorPoint = Vector2.new(1, 0.5)
+onSize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+onSize.BackgroundTransparency = 0.500
+onSize.BorderColor3 = Color3.fromRGB(0, 0, 0)
+onSize.BorderSizePixel = 0
+onSize.Position = UDim2.new(0.899999976, 0, 0.5, 0)
+onSize.Size = UDim2.new(0.0549999997, 0, 1, 0)
+onSize.Font = Enum.Font.Roboto
+onSize.Text = "-"
+onSize.TextColor3 = Color3.fromRGB(255, 255, 255)
+onSize.TextScaled = true
+onSize.TextSize = 14.000
+onSize.TextWrapped = true
+
+container.Name = "container"
+container.Parent = slide
+container.AnchorPoint = Vector2.new(0.5, 0)
+container.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+container.BackgroundTransparency = 0.500
+container.BorderColor3 = Color3.fromRGB(0, 0, 0)
+container.BorderSizePixel = 0
+container.Position = UDim2.new(0.5, 0, 1, 0)
+container.Size = UDim2.new(1, 0, 10, 0)
+
+navbar.Name = "navbar"
+navbar.Parent = container
+navbar.Active = true
+navbar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+navbar.BackgroundTransparency = 0.500
+navbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+navbar.BorderSizePixel = 0
+navbar.Size = UDim2.new(0.25, 0, 1, 0)
+navbar.CanvasSize = UDim2.new(0, 0, 1, 0)
+
+order.Name = "order"
+order.Parent = navbar
+order.SortOrder = Enum.SortOrder.LayoutOrder
+order.Padding = UDim.new(0.0599999987, 0)
+
+separador.Name = "separador"
+separador.Parent = navbar
+separador.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+separador.BackgroundTransparency = 1.000
+separador.BorderColor3 = Color3.fromRGB(0, 0, 0)
+separador.BorderSizePixel = 0
+separador.Size = UDim2.new(1, 0, 0.00999999978, 0)
+
+separadorFinal.Name = "separadorFinal"
+separadorFinal.Parent = navbar
+separadorFinal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+separadorFinal.BackgroundTransparency = 1.000
+separadorFinal.BorderColor3 = Color3.fromRGB(0, 0, 0)
+separadorFinal.BorderSizePixel = 0
+separadorFinal.LayoutOrder = 10000
+separadorFinal.Size = UDim2.new(1, 0, 0.00999999978, 0)
+
+menus.Name = "menus"
+menus.Parent = container
+menus.AnchorPoint = Vector2.new(1, 0.5)
+menus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+menus.BackgroundTransparency = 1.000
+menus.BorderColor3 = Color3.fromRGB(0, 0, 0)
+menus.BorderSizePixel = 0
+menus.Position = UDim2.new(1, 0, 0.5, 0)
+menus.Size = UDim2.new(0.75, 0, 1, 0)
 
 
 
@@ -141,75 +210,6 @@ local components = {
 }
 
 
-
-local validations = {
-
-	limit = function( value, minValue, maxValue )
-
-		if minValue and maxValue then
-			return maxValue > minValue and maxValue > value and value >= minValue
-		elseif maxValue then
-			return value < maxValue
-		elseif minValue then
-			return value > minValue
-		end
-
-		return false
-	end,
-
-	length = function(text, minSize, maxSize)
-		local n = #text
-
-		if maxSize and n > maxSize then
-			return 'The text is too long'
-		elseif minSize and n < minSize then
-			return 'The text is too short'
-		end
-
-		return nil
-	end,
-
-	findText = function(text, values, isValidationNumber)
-		if not values then return nil end
-
-		for _, c in pairs(values) do
-			if isValidationNumber and tonumber(c) then
-				if string.find(tostring(text), tostring(c)) then
-					return tonumber(c)
-				end
-			else
-				if string.find(text, tostring(c)) then
-					return tostring(c)
-				end
-			end
-		end
-
-		return nil
-	end,
-
-	abreviateNumber = function(number)
-		local minValue = 10000
-
-		if number < minValue then
-			return tostring( math.round(number) )
-		end
-
-		local abbreviations = {'', "K", "M", "B", "T"}
-		local index = 1
-
-		while number >= minValue and index < #abbreviations do
-			number = number / 1000
-			index = index + 1
-		end
-
-		if number % 1 == 0 then
-			return tostring(number) .. abbreviations[index]
-		else
-			return string.format("%.1f", number) .. abbreviations[index]
-		end
-	end,
-}
-
 local logic = {
 
 	window = function(menus, navBar, btn)
@@ -266,7 +266,7 @@ local logic = {
 
 		local function handleCallback()
 			local _, err = pcall(function()
-				data.callback()
+				task.spawn(data.callback)
 			end)
 
 			if err and data.onError then
@@ -291,9 +291,6 @@ local logic = {
 			textErrr = nil,
 			numberErr = nil
 		}
-
-
-
 
 		local function validateText()
 			if data.inputType == 'number' or not data.validations then
@@ -337,9 +334,13 @@ local logic = {
 		local function onSucces()
 			if data.onSucces then
 				if currentValue == default then
-					data.onSucces('')
+					task.spawn(function()
+						data.onSucces('')
+					end)
 				else
-					data.onSucces(currentValue)
+					task.spawn(function()
+						data.onSucces(currentValue)
+					end)
 				end
 			end
 		end
@@ -358,7 +359,9 @@ local logic = {
 			else
 				currentValue = valueText.Text
 				if data.onSucces then
-					data.onSucces(currentValue)
+					task.spawn(function()
+						data.onSucces(currentValue)
+					end)
 				end
 			end
 
@@ -484,7 +487,9 @@ local logic = {
 			updateStatus()
 
 			if data.onChangeValue then
-				data.onChangeValue(newValue)
+				task.spawn(function()
+					data.onChangeValue(newValue)
+				end)
 			end
 		end
 
@@ -524,6 +529,12 @@ local logic = {
 				btn.BackgroundColor3 = defaultColor
 			end
 			userSelected = nil
+
+			if data.onChangeUser then
+				task.spawn(function()
+					data.onChangeUser(nil)
+				end)
+			end
 		end
 
 		local function onSelectedUser(name)
@@ -533,7 +544,9 @@ local logic = {
 					selectedUserText.Text = '('..plr.DisplayName..') '..plr.Name
 
 					if data.onChangeUser then
-						data.onChangeUser(plr)
+						task.spawn(function()
+							data.onChangeUser(plr)
+						end)
 					end
 
 					local btn = findBtnUserByName(name)
@@ -548,7 +561,9 @@ local logic = {
 			if exists then return end
 
 			if data.onJoinedNewUser then
-				data.onJoinedNewUser(plr)
+				task.spawn(function()
+					data.onJoinedNewUser(plr)
+				end)
 			end
 
 			local userBtn = components.simpleButton(userList, plr.Name)
@@ -578,7 +593,9 @@ local logic = {
 			if not exists then return end
 
 			if data.onLeaveUser then
-				data.onLeaveUser(plr)
+				task.spawn(function()
+					data.onLeaveUser(plr)
+				end)
 			end
 
 			exists:Destroy()
@@ -597,11 +614,85 @@ local logic = {
 			addPlayer(plr)
 		end
 
-
 		players.PlayerAdded:Connect(addPlayer)
 		players.PlayerRemoving:Connect(removePlayer)
 	end,
 }
+
+
+
+local validations = {
+
+	limit = function( value, minValue, maxValue )
+
+		if minValue and maxValue then
+			return maxValue > minValue and maxValue > value and value >= minValue
+		elseif maxValue then
+			return value < maxValue
+		elseif minValue then
+			return value > minValue
+		end
+
+		return false
+	end,
+
+	length = function(text, minSize, maxSize)
+		local n = #text
+
+		if maxSize and n > maxSize then
+			return 'The text is too long'
+		elseif minSize and n < minSize then
+			return 'The text is too short'
+		end
+
+		return nil
+	end,
+
+	findText = function(text, values, isValidationNumber)
+		if not values then return nil end
+
+		for _, c in pairs(values) do
+			if isValidationNumber and tonumber(c) then
+				if string.find(tostring(text), tostring(c)) then
+					return tonumber(c)
+				end
+			else
+				if string.find(text, tostring(c)) then
+					return tostring(c)
+				end
+			end
+		end
+
+		return nil
+	end,
+
+	abreviateNumber = function(number)
+		local minValue = 10000
+
+		if number < minValue then
+			return tostring( math.round(number) )
+		end
+
+		local abbreviations = {'', "K", "M", "B", "T"}
+		local index = 1
+
+		while number >= minValue and index < #abbreviations do
+			number = number / 1000
+			index = index + 1
+		end
+
+		if number % 1 == 0 then
+			return tostring(number) .. abbreviations[index]
+		else
+			return string.format("%.1f", number) .. abbreviations[index]
+		end
+	end,
+}
+
+
+local components = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('components'))
+local logic = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('logic'))
+
 
 
 
@@ -1004,613 +1095,35 @@ local library = {
 }
 
 
-
-ui_library.Name = "ui_library"
-ui_library.Parent = game.CoreGui
-ui_library.ResetOnSpawn = false
-ui_library.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-slide.Name = "slide"
-slide.Parent = ui_library
-slide.AnchorPoint = Vector2.new(0.5, 0.5)
-slide.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-slide.BackgroundTransparency = 0.600
-slide.BorderColor3 = Color3.fromRGB(0, 0, 0)
-slide.BorderSizePixel = 0
-slide.Position = UDim2.new(0.5, 0, 0.200000003, 0)
-slide.Size = UDim2.new(0.349999994, 0, 0.0350000001, 0)
-
-title.Name = "title"
-title.Parent = slide
-title.AnchorPoint = Vector2.new(0, 0.5)
-title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundTransparency = 1.000
-title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title.BorderSizePixel = 0
-title.Position = UDim2.new(0.00999999978, 0, 0.5, 0)
-title.Size = UDim2.new(0.400000006, 0, 0.800000012, 0)
-title.Font = Enum.Font.Unknown
-title.Text = "DevComplete Studios"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.TextScaled = true
-title.TextSize = 14.000
-title.TextWrapped = true
-title.TextXAlignment = Enum.TextXAlignment.Left
-
-onClose.Name = "onClose"
-onClose.Parent = slide
-onClose.AnchorPoint = Vector2.new(1, 0.5)
-onClose.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-onClose.BackgroundTransparency = 0.500
-onClose.BorderColor3 = Color3.fromRGB(0, 0, 0)
-onClose.BorderSizePixel = 0
-onClose.Position = UDim2.new(0.980000019, 0, 0.5, 0)
-onClose.Size = UDim2.new(0.0549999997, 0, 1, 0)
-onClose.Font = Enum.Font.Roboto
-onClose.Text = "X"
-onClose.TextColor3 = Color3.fromRGB(255, 255, 255)
-onClose.TextScaled = true
-onClose.TextSize = 14.000
-onClose.TextWrapped = true
-
-onSize.Name = "onSize"
-onSize.Parent = slide
-onSize.AnchorPoint = Vector2.new(1, 0.5)
-onSize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-onSize.BackgroundTransparency = 0.500
-onSize.BorderColor3 = Color3.fromRGB(0, 0, 0)
-onSize.BorderSizePixel = 0
-onSize.Position = UDim2.new(0.899999976, 0, 0.5, 0)
-onSize.Size = UDim2.new(0.0549999997, 0, 1, 0)
-onSize.Font = Enum.Font.Roboto
-onSize.Text = "-"
-onSize.TextColor3 = Color3.fromRGB(255, 255, 255)
-onSize.TextScaled = true
-onSize.TextSize = 14.000
-onSize.TextWrapped = true
-
-container.Name = "container"
-container.Parent = slide
-container.AnchorPoint = Vector2.new(0.5, 0)
-container.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-container.BackgroundTransparency = 0.500
-container.BorderColor3 = Color3.fromRGB(0, 0, 0)
-container.BorderSizePixel = 0
-container.Position = UDim2.new(0.5, 0, 1, 0)
-container.Size = UDim2.new(1, 0, 10, 0)
-
-navbar.Name = "navbar"
-navbar.Parent = container
-navbar.Active = true
-navbar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-navbar.BackgroundTransparency = 0.500
-navbar.BorderColor3 = Color3.fromRGB(0, 0, 0)
-navbar.BorderSizePixel = 0
-navbar.Size = UDim2.new(0.25, 0, 1, 0)
-navbar.CanvasSize = UDim2.new(0, 0, 1, 0)
-
-order.Name = "order"
-order.Parent = navbar
-order.SortOrder = Enum.SortOrder.LayoutOrder
-order.Padding = UDim.new(0.0599999987, 0)
-
-autoFarm.Name = "autoFarm"
-autoFarm.Parent = navbar
-autoFarm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-autoFarm.BackgroundTransparency = 1.000
-autoFarm.BorderColor3 = Color3.fromRGB(0, 0, 0)
-autoFarm.BorderSizePixel = 0
-autoFarm.LayoutOrder = 1
-autoFarm.Size = UDim2.new(0.899999976, 0, 0.100000001, 0)
-autoFarm.Visible = false
-autoFarm.Font = Enum.Font.Unknown
-autoFarm.Text = "Link1"
-autoFarm.TextColor3 = Color3.fromRGB(255, 255, 255)
-autoFarm.TextScaled = true
-autoFarm.TextSize = 14.000
-autoFarm.TextWrapped = true
-
-separador.Name = "separador"
-separador.Parent = navbar
-separador.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-separador.BackgroundTransparency = 1.000
-separador.BorderColor3 = Color3.fromRGB(0, 0, 0)
-separador.BorderSizePixel = 0
-separador.Size = UDim2.new(1, 0, 0.00999999978, 0)
-
-separadorFinal.Name = "separadorFinal"
-separadorFinal.Parent = navbar
-separadorFinal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-separadorFinal.BackgroundTransparency = 1.000
-separadorFinal.BorderColor3 = Color3.fromRGB(0, 0, 0)
-separadorFinal.BorderSizePixel = 0
-separadorFinal.LayoutOrder = 10000
-separadorFinal.Size = UDim2.new(1, 0, 0.00999999978, 0)
-
-menus.Name = "menus"
-menus.Parent = container
-menus.AnchorPoint = Vector2.new(1, 0.5)
-menus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-menus.BackgroundTransparency = 1.000
-menus.BorderColor3 = Color3.fromRGB(0, 0, 0)
-menus.BorderSizePixel = 0
-menus.Position = UDim2.new(1, 0, 0.5, 0)
-menus.Size = UDim2.new(0.75, 0, 1, 0)
-
-autoFarm_2.Name = "autoFarm"
-autoFarm_2.Parent = menus
-autoFarm_2.Active = true
-autoFarm_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-autoFarm_2.BackgroundTransparency = 0.700
-autoFarm_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-autoFarm_2.BorderSizePixel = 0
-autoFarm_2.Size = UDim2.new(1, 0, 1, 0)
-autoFarm_2.Visible = false
-autoFarm_2.CanvasSize = UDim2.new(0, 0, 1, 0)
-
-order_2.Name = "order"
-order_2.Parent = autoFarm_2
-order_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
-order_2.SortOrder = Enum.SortOrder.LayoutOrder
-order_2.Padding = UDim.new(0.0399999991, 0)
-
-separador_2.Name = "separador"
-separador_2.Parent = autoFarm_2
-separador_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-separador_2.BackgroundTransparency = 1.000
-separador_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-separador_2.BorderSizePixel = 0
-separador_2.Size = UDim2.new(1, 0, 0.00999999978, 0)
-
-separadorFinal_2.Name = "separadorFinal"
-separadorFinal_2.Parent = autoFarm_2
-separadorFinal_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-separadorFinal_2.BackgroundTransparency = 1.000
-separadorFinal_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-separadorFinal_2.BorderSizePixel = 0
-separadorFinal_2.LayoutOrder = 10000
-separadorFinal_2.Size = UDim2.new(1, 0, 0.00999999978, 0)
-
-option.Name = "option"
-option.Parent = autoFarm_2
-option.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-option.BorderColor3 = Color3.fromRGB(0, 0, 0)
-option.BorderSizePixel = 0
-option.LayoutOrder = 1
-option.Size = UDim2.new(0.920000017, 0, 0.119999997, 0)
-
-title_2.Name = "title"
-title_2.Parent = option
-title_2.AnchorPoint = Vector2.new(0, 0.5)
-title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-title_2.BackgroundTransparency = 1.000
-title_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title_2.BorderSizePixel = 0
-title_2.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-title_2.Size = UDim2.new(0.550000012, 0, 0.800000012, 0)
-title_2.Font = Enum.Font.Unknown
-title_2.Text = "Auto Farm"
-title_2.TextColor3 = Color3.fromRGB(0, 123, 255)
-title_2.TextScaled = true
-title_2.TextSize = 14.000
-title_2.TextWrapped = true
-title_2.TextXAlignment = Enum.TextXAlignment.Left
-
-btn.Name = "btn"
-btn.Parent = option
-btn.AnchorPoint = Vector2.new(1, 0.5)
-btn.BackgroundColor3 = Color3.fromRGB(76, 76, 76)
-btn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-btn.BorderSizePixel = 0
-btn.Position = UDim2.new(0.899999976, 0, 0.5, 0)
-btn.Size = UDim2.new(0.140000001, 0, 0.5, 0)
-btn.Font = Enum.Font.SourceSans
-btn.Text = ""
-btn.TextColor3 = Color3.fromRGB(0, 0, 0)
-btn.TextSize = 14.000
-
-border.CornerRadius = UDim.new(1, 0)
-border.Name = "border"
-border.Parent = btn
-
-circle.Name = "circle"
-circle.Parent = btn
-circle.AnchorPoint = Vector2.new(0, 0.5)
-circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-circle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-circle.BorderSizePixel = 0
-circle.Position = UDim2.new(0.600000024, 0, 0.5, 0)
-circle.Size = UDim2.new(0.449999988, 0, 1.29999995, 0)
-
-border_2.CornerRadius = UDim.new(1, 0)
-border_2.Name = "border"
-border_2.Parent = circle
-
-button.Name = "button"
-button.Parent = autoFarm_2
-button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-button.BorderSizePixel = 0
-button.LayoutOrder = 1
-button.Size = UDim2.new(0.920000017, 0, 0.119999997, 0)
-
-title_3.Name = "title"
-title_3.Parent = button
-title_3.AnchorPoint = Vector2.new(0, 0.5)
-title_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-title_3.BackgroundTransparency = 1.000
-title_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title_3.BorderSizePixel = 0
-title_3.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-title_3.Size = UDim2.new(0.550000012, 0, 0.800000012, 0)
-title_3.Font = Enum.Font.Unknown
-title_3.Text = "Auto Farm"
-title_3.TextColor3 = Color3.fromRGB(0, 123, 255)
-title_3.TextScaled = true
-title_3.TextSize = 14.000
-title_3.TextWrapped = true
-title_3.TextXAlignment = Enum.TextXAlignment.Left
-
-event.Name = "event"
-event.Parent = button
-event.AnchorPoint = Vector2.new(1, 0.5)
-event.BackgroundColor3 = Color3.fromRGB(0, 39, 165)
-event.BorderColor3 = Color3.fromRGB(0, 0, 0)
-event.BorderSizePixel = 0
-event.Position = UDim2.new(0.899999976, 0, 0.5, 0)
-event.Size = UDim2.new(0.300000012, 0, 0.800000012, 0)
-
-border_3.CornerRadius = UDim.new(1, 0)
-border_3.Name = "border"
-border_3.Parent = event
-
-click.Name = "click"
-click.Parent = event
-click.AnchorPoint = Vector2.new(0.5, 0.5)
-click.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-click.BorderColor3 = Color3.fromRGB(0, 0, 0)
-click.BorderSizePixel = 0
-click.Position = UDim2.new(0.5, 0, 0.5, 0)
-click.Size = UDim2.new(0.959999979, 0, 0.899999976, 0)
-click.Font = Enum.Font.Unknown
-click.Text = "Click"
-click.TextColor3 = Color3.fromRGB(255, 255, 255)
-click.TextScaled = true
-click.TextSize = 14.000
-click.TextWrapped = true
-
-border_4.CornerRadius = UDim.new(1, 0)
-border_4.Name = "border"
-border_4.Parent = click
-
-slider.Name = "slider"
-slider.Parent = autoFarm_2
-slider.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
-slider.BorderSizePixel = 0
-slider.LayoutOrder = 1
-slider.Size = UDim2.new(0.920000017, 0, 0.25999999, 0)
-
-title_4.Name = "title"
-title_4.Parent = slider
-title_4.AnchorPoint = Vector2.new(0.5, 0)
-title_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-title_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title_4.BorderSizePixel = 0
-title_4.Position = UDim2.new(0.5, 0, 0.100000001, 0)
-title_4.Size = UDim2.new(0.800000012, 0, 0.25, 0)
-title_4.Font = Enum.Font.Unknown
-title_4.Text = "Stats Bills Planet"
-title_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-title_4.TextScaled = true
-title_4.TextSize = 14.000
-title_4.TextWrapped = true
-
-slide_2.Name = "slide"
-slide_2.Parent = slider
-slide_2.AnchorPoint = Vector2.new(0.5, 0.5)
-slide_2.BackgroundColor3 = Color3.fromRGB(54, 54, 54)
-slide_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-slide_2.BorderSizePixel = 0
-slide_2.Position = UDim2.new(0.5, 0, 0.699999988, 0)
-slide_2.Size = UDim2.new(0.939999998, 0, 0.360000014, 0)
-
-border_5.CornerRadius = UDim.new(1, 0)
-border_5.Name = "border"
-border_5.Parent = slide_2
-
-btn_2.Name = "btn"
-btn_2.Parent = slide_2
-btn_2.AnchorPoint = Vector2.new(0, 0.5)
-btn_2.BackgroundColor3 = Color3.fromRGB(0, 38, 143)
-btn_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-btn_2.BorderSizePixel = 0
-btn_2.Position = UDim2.new(0, 0, 0.5, 0)
-btn_2.Size = UDim2.new(0.5, 0, 1, 0)
-btn_2.Font = Enum.Font.SourceSans
-btn_2.Text = ""
-btn_2.TextColor3 = Color3.fromRGB(0, 0, 0)
-btn_2.TextSize = 14.000
-
-border_6.CornerRadius = UDim.new(0.800000012, 0)
-border_6.Name = "border"
-border_6.Parent = btn_2
-
-value.Name = "value"
-value.Parent = slide_2
-value.AnchorPoint = Vector2.new(0.5, 0.5)
-value.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-value.BackgroundTransparency = 1.000
-value.BorderColor3 = Color3.fromRGB(0, 0, 0)
-value.BorderSizePixel = 0
-value.Position = UDim2.new(0.5, 0, 0.5, 0)
-value.Size = UDim2.new(0.200000003, 0, 0.600000024, 0)
-value.Font = Enum.Font.Unknown
-value.Text = "28% / 100k"
-value.TextColor3 = Color3.fromRGB(255, 255, 255)
-value.TextScaled = true
-value.TextSize = 14.000
-value.TextWrapped = true
-
-input.Name = "input"
-input.Parent = autoFarm_2
-input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-input.BorderColor3 = Color3.fromRGB(0, 0, 0)
-input.BorderSizePixel = 0
-input.LayoutOrder = 1
-input.Size = UDim2.new(0.920000017, 0, 0.25999999, 0)
-
-title_5.Name = "title"
-title_5.Parent = input
-title_5.AnchorPoint = Vector2.new(0.5, 0)
-title_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-title_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title_5.BorderSizePixel = 0
-title_5.Position = UDim2.new(0.5, 0, 0.100000001, 0)
-title_5.Size = UDim2.new(0.800000012, 0, 0.25, 0)
-title_5.Font = Enum.Font.Unknown
-title_5.Text = "Enter your name"
-title_5.TextColor3 = Color3.fromRGB(255, 255, 255)
-title_5.TextScaled = true
-title_5.TextSize = 14.000
-title_5.TextWrapped = true
-
-value_2.Name = "value"
-value_2.Parent = input
-value_2.AnchorPoint = Vector2.new(0.5, 0.5)
-value_2.BackgroundColor3 = Color3.fromRGB(0, 47, 200)
-value_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-value_2.BorderSizePixel = 0
-value_2.Position = UDim2.new(0.5, 0, 0.699999988, 0)
-value_2.Size = UDim2.new(0.939999998, 0, 0.360000014, 0)
-
-border_7.CornerRadius = UDim.new(0.200000003, 0)
-border_7.Name = "border"
-border_7.Parent = value_2
-
-text.Name = "text"
-text.Parent = value_2
-text.AnchorPoint = Vector2.new(0.5, 0.5)
-text.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-text.BorderColor3 = Color3.fromRGB(0, 0, 0)
-text.BorderSizePixel = 0
-text.Position = UDim2.new(0.5, 0, 0.5, 0)
-text.Size = UDim2.new(0.980000019, 0, 0.879999995, 0)
-text.Font = Enum.Font.Unknown
-text.Text = ""
-text.TextColor3 = Color3.fromRGB(255, 255, 255)
-text.TextScaled = true
-text.TextSize = 14.000
-text.TextTransparency = 0.500
-text.TextWrapped = true
-
-border_8.CornerRadius = UDim.new(0.200000003, 0)
-border_8.Name = "border"
-border_8.Parent = text
-
-options.Name = "options"
-options.Parent = autoFarm_2
-options.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-options.BorderColor3 = Color3.fromRGB(0, 0, 0)
-options.BorderSizePixel = 0
-options.LayoutOrder = 1
-options.Size = UDim2.new(0.920000017, 0, 0.600000024, 0)
-
-texts.Name = "texts"
-texts.Parent = options
-texts.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-texts.BackgroundTransparency = 1.000
-texts.BorderColor3 = Color3.fromRGB(0, 0, 0)
-texts.BorderSizePixel = 0
-texts.Size = UDim2.new(1, 0, 0.150000006, 0)
-
-on.Name = "on"
-on.Parent = texts
-on.AnchorPoint = Vector2.new(0, 0.5)
-on.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-on.BackgroundTransparency = 1.000
-on.BorderColor3 = Color3.fromRGB(0, 0, 0)
-on.BorderSizePixel = 0
-on.Position = UDim2.new(0, 0, 0.5, 0)
-on.Size = UDim2.new(0.400000006, 0, 0.800000012, 0)
-on.Font = Enum.Font.Unknown
-on.Text = "Active"
-on.TextColor3 = Color3.fromRGB(255, 255, 255)
-on.TextScaled = true
-on.TextSize = 14.000
-on.TextWrapped = true
-
-off.Name = "off"
-off.Parent = texts
-off.AnchorPoint = Vector2.new(1, 0.5)
-off.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-off.BackgroundTransparency = 1.000
-off.BorderColor3 = Color3.fromRGB(0, 0, 0)
-off.BorderSizePixel = 0
-off.Position = UDim2.new(1, 0, 0.5, 0)
-off.Size = UDim2.new(0.400000006, 0, 0.800000012, 0)
-off.Font = Enum.Font.Unknown
-off.Text = "Disabled"
-off.TextColor3 = Color3.fromRGB(255, 255, 255)
-off.TextScaled = true
-off.TextSize = 14.000
-off.TextWrapped = true
-
-values.Name = "values"
-values.Parent = options
-values.AnchorPoint = Vector2.new(0.5, 1)
-values.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-values.BackgroundTransparency = 1.000
-values.BorderColor3 = Color3.fromRGB(0, 0, 0)
-values.BorderSizePixel = 0
-values.Position = UDim2.new(0.5, 0, 1, 0)
-values.Size = UDim2.new(1, 0, 0.850000024, 0)
-
-on_2.Name = "on"
-on_2.Parent = values
-on_2.Active = true
-on_2.BackgroundColor3 = Color3.fromRGB(0, 27, 199)
-on_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-on_2.BorderSizePixel = 0
-on_2.Size = UDim2.new(0.5, 0, 1, 0)
-on_2.CanvasSize = UDim2.new(0, 0, 1, 0)
-
-off_2.Name = "off"
-off_2.Parent = values
-off_2.Active = true
-off_2.AnchorPoint = Vector2.new(1, 0.5)
-off_2.BackgroundColor3 = Color3.fromRGB(232, 3, 64)
-off_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-off_2.BorderSizePixel = 0
-off_2.Position = UDim2.new(1, 0, 0.5, 0)
-off_2.Size = UDim2.new(0.5, 0, 1, 0)
-off_2.CanvasSize = UDim2.new(0, 0, 1, 0)
-
-userList.Name = "userList"
-userList.Parent = autoFarm_2
-userList.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-userList.BorderColor3 = Color3.fromRGB(0, 0, 0)
-userList.BorderSizePixel = 0
-userList.LayoutOrder = 1
-userList.Size = UDim2.new(0.920000017, 0, 0.600000024, 0)
-
-texts_2.Name = "texts"
-texts_2.Parent = userList
-texts_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-texts_2.BackgroundTransparency = 1.000
-texts_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-texts_2.BorderSizePixel = 0
-texts_2.Size = UDim2.new(1, 0, 0.150000006, 0)
-
-currentUser.Name = "currentUser"
-currentUser.Parent = texts_2
-currentUser.AnchorPoint = Vector2.new(0, 0.5)
-currentUser.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-currentUser.BackgroundTransparency = 1.000
-currentUser.BorderColor3 = Color3.fromRGB(0, 0, 0)
-currentUser.BorderSizePixel = 0
-currentUser.Position = UDim2.new(0.00999999978, 0, 0.5, 0)
-currentUser.Size = UDim2.new(0.800000012, 0, 0.800000012, 0)
-currentUser.Font = Enum.Font.Unknown
-currentUser.Text = "Here you will see the user you have selected."
-currentUser.TextColor3 = Color3.fromRGB(255, 255, 255)
-currentUser.TextScaled = true
-currentUser.TextSize = 14.000
-currentUser.TextWrapped = true
-currentUser.TextXAlignment = Enum.TextXAlignment.Left
-
-totalUsers.Name = "totalUsers"
-totalUsers.Parent = texts_2
-totalUsers.AnchorPoint = Vector2.new(1, 0.5)
-totalUsers.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-totalUsers.BackgroundTransparency = 1.000
-totalUsers.BorderColor3 = Color3.fromRGB(0, 0, 0)
-totalUsers.BorderSizePixel = 0
-totalUsers.Position = UDim2.new(1, 0, 0.5, 0)
-totalUsers.Size = UDim2.new(0.100000001, 0, 0.800000012, 0)
-totalUsers.Font = Enum.Font.Unknown
-totalUsers.Text = "#1"
-totalUsers.TextColor3 = Color3.fromRGB(255, 255, 255)
-totalUsers.TextScaled = true
-totalUsers.TextSize = 14.000
-totalUsers.TextTransparency = 0.500
-totalUsers.TextWrapped = true
-
-users.Name = "users"
-users.Parent = userList
-users.Active = true
-users.AnchorPoint = Vector2.new(0.5, 1)
-users.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-users.BorderColor3 = Color3.fromRGB(100, 1, 199)
-users.Position = UDim2.new(0.5, 0, 1, 0)
-users.Size = UDim2.new(1, 0, 0.839999974, 0)
-users.CanvasSize = UDim2.new(0, 0, 1, 0)
-
-userName.Name = "userName"
-userName.Parent = users
-userName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-userName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-userName.BorderSizePixel = 0
-userName.Size = UDim2.new(0.899999976, 0, 0.25, 0)
-userName.Font = Enum.Font.Unknown
-userName.Text = "There are currently no users on the server!"
-userName.TextColor3 = Color3.fromRGB(0, 0, 0)
-userName.TextScaled = true
-userName.TextSize = 14.000
-userName.TextWrapped = true
-
-order_3.Name = "order"
-order_3.Parent = users
-order_3.HorizontalAlignment = Enum.HorizontalAlignment.Center
-order_3.SortOrder = Enum.SortOrder.LayoutOrder
-order_3.Padding = UDim.new(0.0299999993, 0)
-
-tex.Name = "tex"
-tex.Parent = autoFarm_2
-tex.BackgroundColor3 = Color3.fromRGB(17, 0, 172)
-tex.BorderColor3 = Color3.fromRGB(0, 0, 0)
-tex.BorderSizePixel = 0
-tex.LayoutOrder = 1
-tex.Size = UDim2.new(0.899999976, 0, 0.0799999982, 0)
-tex.Font = Enum.Font.Unknown
-tex.TextColor3 = Color3.fromRGB(255, 255, 255)
-tex.TextScaled = true
-tex.TextSize = 14.000
-tex.TextWrapped = true
-
-UICorner.CornerRadius = UDim.new(0.200000003, 0)
-UICorner.Parent = tex
-
-
-local function UNVFAL_fake_script() -- slide.logic 
+local function GDZJLVC_fake_script() -- slide.logic 
 	local script = Instance.new('LocalScript', slide)
 
 	local slide = script.Parent
 	local onClose = slide:WaitForChild('onClose')
 	local onSize = slide:WaitForChild('onSize')
 	local container = slide:WaitForChild('container')
-
-
+	
+	
 	slide.Draggable = true
 	slide.Active = true
-
-
+	
+	
 	local function closeWindow()
 		slide.Parent:Destroy()
 	end
-
+	
 	local function sizeWindow()
 		container.Visible = not container.Visible
 	end
-
-
-
+	
+	
+	
 	onClose.MouseButton1Click:Connect(closeWindow)
 	onSize.MouseButton1Click:Connect(sizeWindow)
+	
 end
 
-UNVFAL_fake_script()
-
+GDZJLVC_fake_script()
 
 
 -- Programacion orientada a objetos
@@ -1655,9 +1168,109 @@ function new(name: string)
 end
 
 
-
 return {
 	new = function(name)
 		return new(name)
 	end,
 }
+
+
+-- example
+--local textData = {
+--	text = 'Mi message'
+--}
+
+--local dataButton = {
+--	title = 'Punch',
+
+--	callback = function()
+--		print('click!')
+--	end,
+
+--	onError = function(err)
+--		print('Error! '..err)
+--	end,
+--}
+
+--local inputData = {
+--	title = 'Enter your age', -- required
+--	inputType = 'number', -- optional (default 'text')
+--	defaultValue = 100000, -- optional
+
+--	validations = { -- all optional
+--		minValue = 100, -- only inputType number
+--		maxValue = 10000000, -- only inputType number
+
+--		minLength = 10, -- only inputType text
+--		maxLength = 100, -- only inputType text
+
+--		excludes = {100, 200, 300, 'Hello World', 'Olaf'}, -- What you don't want the text to have.
+--	},
+
+--	onSucces = function(value) -- optional
+--		print('Your age is: '..value)
+--	end,
+--}
+
+--local sliderData = {
+--	title = 'Stats TP Bills Planet',
+--	value = 10000000,
+--	minValue = 10000000,
+--	maxValue = 300000000, -- optional (default = minValue x 10)
+
+--	onMove = function(currentValue) -- optional
+--		print("onMove: ", currentValue)
+--	end,
+
+--	onFinishedMove = function(currentValue) -- optional
+--		print("onFinishedMove: ", currentValue)
+--	end,
+--}
+
+--local optionData = {
+--	value = true,
+--	title = 'Auto Attack',
+
+--	onChangeValue = function(value)
+--		print('New value: '..tostring(value))
+--	end
+--}
+
+--local userListData = {
+--	borderUsers = false,
+
+--	onChangeUser = function(user:Player)
+--		print('New user selected: '..user.Name)
+--	end,
+
+--	onLeaveUser = function(user:Player)
+--		print('Bye: '..user.Name)
+--	end,
+
+--	onJoinedNewUser = function(user:Player)
+--		print('Welcone: '..user.Name)
+--	end,
+--}
+
+
+--local autoFarm = new('Auto farm')
+
+--local autoFarmInfo = autoFarm:text(textData)
+--autoFarm:button(dataButton)
+--autoFarm:input(inputData)
+--autoFarm:slider(sliderData)
+--autoFarm:option(optionData)
+--autoFarm:UserList(userListData)
+
+
+--task.spawn(function()
+--	for i = 1, 100, 1 do
+--		autoFarmInfo.updateText('Text updated '..i)
+--		task.wait(0.1)
+--	end
+--end)
+
+
+
+
+

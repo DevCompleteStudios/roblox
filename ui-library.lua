@@ -1641,7 +1641,7 @@ function poo:option(data)
 end
 
 function poo:UserList(data)
-	library.userList(self.window)
+	library.userList(self.window, data)
 end
 
 function new(name: string)

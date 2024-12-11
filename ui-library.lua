@@ -378,8 +378,6 @@ local logic = {
 	input = function(input, data)
 		local value = input:WaitForChild('value')
 		local valueText = value:WaitForChild('text')
-		local validations = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('validations'))
-		local components = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('components'))
 
 		local default = 'Enter value'
 		local currentValue = data.defaultValue or default
@@ -492,8 +490,6 @@ local logic = {
 		local slide = slider:WaitForChild('slide')
 		local valueText = slide:WaitForChild('value')
 		local btn = slide:WaitForChild('btn')
-
-		local validations = require(game:GetService('StarterGui'):WaitForChild('ui_library'):WaitForChild('validations'))
 
 		local inputService = game:GetService('UserInputService')
 		local onMove = false

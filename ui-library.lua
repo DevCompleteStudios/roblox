@@ -126,6 +126,38 @@ menus.BorderSizePixel = 0
 menus.Position = UDim2.new(1, 0, 0.5, 0)
 menus.Size = UDim2.new(0.75, 0, 1, 0)
 
+-- Scripts:
+
+local function YIKVGY_fake_script() -- slide.logic 
+	local script = Instance.new('LocalScript', slide)
+
+	local slide = script.Parent
+	local onClose = slide:WaitForChild('onClose')
+	local onSize = slide:WaitForChild('onSize')
+	local container = slide:WaitForChild('container')
+	
+	
+	slide.Draggable = true
+	slide.Active = true
+	
+	
+	local function closeWindow()
+		slide.Parent:Destroy()
+	end
+	
+	local function sizeWindow()
+		container.Visible = not container.Visible
+	end
+	
+	
+	
+	onClose.MouseButton1Click:Connect(closeWindow)
+	onSize.MouseButton1Click:Connect(sizeWindow)
+	
+end
+
+YIKVGY_fake_script()
+
 
 
 local components = {
@@ -205,10 +237,76 @@ local components = {
 		scrollingFrame.AutomaticCanvasSize = automaticOrder
 	end,
 
-
-
 }
 
+
+local validations = {
+
+	limit = function( value, minValue, maxValue )
+
+		if minValue and maxValue then
+			return maxValue > minValue and maxValue > value and value >= minValue
+		elseif maxValue then
+			return value < maxValue
+		elseif minValue then
+			return value > minValue
+		end
+
+		return false
+	end,
+
+	length = function(text, minSize, maxSize)
+		local n = #text
+
+		if maxSize and n > maxSize then
+			return 'The text is too long'
+		elseif minSize and n < minSize then
+			return 'The text is too short'
+		end
+
+		return nil
+	end,
+
+	findText = function(text, values, isValidationNumber)
+		if not values then return nil end
+
+		for _, c in pairs(values) do
+			if isValidationNumber and tonumber(c) then
+				if string.find(tostring(text), tostring(c)) then
+					return tonumber(c)
+				end
+			else
+				if string.find(text, tostring(c)) then
+					return tostring(c)
+				end
+			end
+		end
+
+		return nil
+	end,
+
+	abreviateNumber = function(number)
+		local minValue = 10000
+
+		if number < minValue then
+			return tostring( math.round(number) )
+		end
+
+		local abbreviations = {'', "K", "M", "B", "T"}
+		local index = 1
+
+		while number >= minValue and index < #abbreviations do
+			number = number / 1000
+			index = index + 1
+		end
+
+		if number % 1 == 0 then
+			return tostring(number) .. abbreviations[index]
+		else
+			return string.format("%.1f", number) .. abbreviations[index]
+		end
+	end,
+}
 
 local logic = {
 
@@ -498,7 +596,7 @@ local logic = {
 	end,
 
 	userList = function(scrolling, components, data)
-		local userList = scrolling:WaitForChild('users')
+		local userList:ScrollingFrame = scrolling:WaitForChild('users')
 		local texts = scrolling:WaitForChild('texts')
 		local selectedUserText = texts:WaitForChild('currentUser')
 		local countUserText = texts:WaitForChild('totalUsers')
@@ -556,6 +654,48 @@ local logic = {
 			end
 		end
 
+		local function waitingForDefaultUser()
+			local maxTime = data.waitingSecondsForDefaultUser or 40
+			local name = data.nameDefaultUser
+			local attemps = 0
+
+			repeat
+				selectedUserText.Text = '('..attemps..')'..'Waiting for player '..'"'..name..'"'
+				onSelectedUser(name)
+				attemps = attemps + 1
+				task.wait(1)
+			until attemps >= maxTime or userSelected ~= nil
+
+			if attemps >= maxTime and userSelected == nil then
+				selectedUserText.Text = 'The user was not found within the maximum number of attempts.'
+				task.spawn(function()
+					if data.onUserNotFound then
+						data.onUserNotFound()
+					end
+				end)
+			else
+				if data.onSuccesFindDefaultUser then
+					task.spawn(data.onSuccesFindDefaultUser)
+				end
+			end
+		end
+
+
+		local function showAlertUsers()
+			local nameNotUsers = 'There are no users currently'
+
+			if #players:GetPlayers() == 1 then
+				components.simpleButton(userList, nameNotUsers)
+			else
+				local btn = userList:GetChildren()[nameNotUsers]
+
+				if btn then
+					btn:Destroy()
+				end
+			end
+		end
+
+
 		local function addPlayer(plr:Player)
 			local exists = findBtnUserByName(plr.Name)
 			if exists then return end
@@ -570,7 +710,6 @@ local logic = {
 			userBtn.BackgroundColor3 = defaultColor
 			countUserText.Text = '#'..tostring(#players:GetPlayers())
 
-			-- manejar evento para activar un usuario y demás.
 			userBtn.MouseButton1Click:Connect(function()
 				if userSelected and userSelected.Name == plr.Name then
 					cancelSelectedUser()
@@ -586,6 +725,8 @@ local logic = {
 					onSelectedUser(plr.Name)
 				end
 			end)
+
+			pcall(showAlertUsers)
 		end
 
 		local function removePlayer(plr:Player)
@@ -604,8 +745,11 @@ local logic = {
 			if userSelected.Name == exists.Name then
 				cancelSelectedUser()
 			end
+
+			pcall(showAlertUsers)
 		end
 
+		pcall(showAlertUsers)
 
 		for _, plr in pairs(players:GetPlayers()) do
 			if plr.UserId == player.UserId then
@@ -616,84 +760,23 @@ local logic = {
 
 		players.PlayerAdded:Connect(addPlayer)
 		players.PlayerRemoving:Connect(removePlayer)
-	end,
-}
 
+		if data.nameDefaultUser then
+			local _, e = pcall(waitingForDefaultUser)
 
-
-local validations = {
-
-	limit = function( value, minValue, maxValue )
-
-		if minValue and maxValue then
-			return maxValue > minValue and maxValue > value and value >= minValue
-		elseif maxValue then
-			return value < maxValue
-		elseif minValue then
-			return value > minValue
-		end
-
-		return false
-	end,
-
-	length = function(text, minSize, maxSize)
-		local n = #text
-
-		if maxSize and n > maxSize then
-			return 'The text is too long'
-		elseif minSize and n < minSize then
-			return 'The text is too short'
-		end
-
-		return nil
-	end,
-
-	findText = function(text, values, isValidationNumber)
-		if not values then return nil end
-
-		for _, c in pairs(values) do
-			if isValidationNumber and tonumber(c) then
-				if string.find(tostring(text), tostring(c)) then
-					return tonumber(c)
-				end
-			else
-				if string.find(text, tostring(c)) then
-					return tostring(c)
-				end
+			if e then
+				selectedUserText.Text = 'An error occurred while searching for the default user.'
 			end
 		end
-
-		return nil
-	end,
-
-	abreviateNumber = function(number)
-		local minValue = 10000
-
-		if number < minValue then
-			return tostring( math.round(number) )
-		end
-
-		local abbreviations = {'', "K", "M", "B", "T"}
-		local index = 1
-
-		while number >= minValue and index < #abbreviations do
-			number = number / 1000
-			index = index + 1
-		end
-
-		if number % 1 == 0 then
-			return tostring(number) .. abbreviations[index]
-		else
-			return string.format("%.1f", number) .. abbreviations[index]
-		end
 	end,
 }
-
 
 
 local library = {
 
-	window = function(name, menus, navbar)
+	window = function(name, menus, navbar, defaultVisible)
+		defaultVisible = defaultVisible or false
+
 		local window = Instance.new('ScrollingFrame')
 		window.Name = string.lower(name)
 		window.Parent = menus
@@ -705,7 +788,7 @@ local library = {
 		window.Size = UDim2.new(1, 0, 1, 0)
 		window.CanvasPosition = Vector2.new(0, 395.093994)
 		window.CanvasSize = UDim2.new(0, 0, 1, 0)
-		window.Visible = false
+		window.Visible = defaultVisible
 
 		local link = Instance.new("TextButton")
 
@@ -1008,7 +1091,6 @@ local library = {
 		local currentUser = Instance.new("TextLabel")
 		local totalUsers = Instance.new("TextLabel")
 		local users = Instance.new("ScrollingFrame")
-		local userName = Instance.new("TextButton")
 
 		userList.Name = "userList"
 		userList.Parent = window
@@ -1070,19 +1152,6 @@ local library = {
 		users.Size = UDim2.new(1, 0, 0.839999974, 0)
 		users.CanvasSize = UDim2.new(0, 0, 1, 0)
 
-		userName.Name = "userName"
-		userName.Parent = users
-		userName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		userName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		userName.BorderSizePixel = 0
-		userName.Size = UDim2.new(0.899999976, 0, 0.25, 0)
-		userName.Font = Enum.Font.Unknown
-		userName.Text = "There are currently no users on the server!"
-		userName.TextColor3 = Color3.fromRGB(0, 0, 0)
-		userName.TextScaled = true
-		userName.TextSize = 14.000
-		userName.TextWrapped = true
-
 		components.orderScrollingFrame(users, Enum.HorizontalAlignment.Center, 0.03, Enum.AutomaticSize.Y)
 		logic.userList(userList, components, data)
 	end,
@@ -1090,38 +1159,9 @@ local library = {
 }
 
 
-local function GDZJLVC_fake_script() -- slide.logic 
-	local script = Instance.new('LocalScript', slide)
-
-	local slide = script.Parent
-	local onClose = slide:WaitForChild('onClose')
-	local onSize = slide:WaitForChild('onSize')
-	local container = slide:WaitForChild('container')
-	
-	
-	slide.Draggable = true
-	slide.Active = true
-	
-	
-	local function closeWindow()
-		slide.Parent:Destroy()
-	end
-	
-	local function sizeWindow()
-		container.Visible = not container.Visible
-	end
-	
-	
-	
-	onClose.MouseButton1Click:Connect(closeWindow)
-	onSize.MouseButton1Click:Connect(sizeWindow)
-	
-end
-
-GDZJLVC_fake_script()
 
 
--- Programacion orientada a objetos
+
 local poo = {}
 poo.__index = poo
 
@@ -1152,119 +1192,23 @@ function poo:UserList(data)
 	library.userList(self.window, data)
 end
 
-function new(name: string)
+function new(name, defaultVisible)
 	-- aplicar validaciones
 	local self = setmetatable({}, poo)
+	local menus = script.Parent:WaitForChild('slide'):WaitForChild('container'):WaitForChild('menus')
+	local navbar = script.Parent:WaitForChild('slide'):WaitForChild('container'):WaitForChild('navbar')
 
-	self.window = library.window(name, menus, navbar)
+	self.window = library.window(name, menus, navbar, defaultVisible)
 	self.name = name
 
 	return self
 end
 
 
+
 return {
-	new = function(name)
+	window = function(name)
 		return new(name)
 	end,
 }
-
-
--- example
---local textData = {
---	text = 'Mi message'
---}
-
---local dataButton = {
---	title = 'Punch',
-
---	callback = function()
---		print('click!')
---	end,
-
---	onError = function(err)
---		print('Error! '..err)
---	end,
---}
-
---local inputData = {
---	title = 'Enter your age', -- required
---	inputType = 'number', -- optional (default 'text')
---	defaultValue = 100000, -- optional
-
---	validations = { -- all optional
---		minValue = 100, -- only inputType number
---		maxValue = 10000000, -- only inputType number
-
---		minLength = 10, -- only inputType text
---		maxLength = 100, -- only inputType text
-
---		excludes = {100, 200, 300, 'Hello World', 'Olaf'}, -- What you don't want the text to have.
---	},
-
---	onSucces = function(value) -- optional
---		print('Your age is: '..value)
---	end,
---}
-
---local sliderData = {
---	title = 'Stats TP Bills Planet',
---	value = 10000000,
---	minValue = 10000000,
---	maxValue = 300000000, -- optional (default = minValue x 10)
-
---	onMove = function(currentValue) -- optional
---		print("onMove: ", currentValue)
---	end,
-
---	onFinishedMove = function(currentValue) -- optional
---		print("onFinishedMove: ", currentValue)
---	end,
---}
-
---local optionData = {
---	value = true,
---	title = 'Auto Attack',
-
---	onChangeValue = function(value)
---		print('New value: '..tostring(value))
---	end
---}
-
---local userListData = {
---	borderUsers = false,
-
---	onChangeUser = function(user:Player)
---		print('New user selected: '..user.Name)
---	end,
-
---	onLeaveUser = function(user:Player)
---		print('Bye: '..user.Name)
---	end,
-
---	onJoinedNewUser = function(user:Player)
---		print('Welcone: '..user.Name)
---	end,
---}
-
-
---local autoFarm = new('Auto farm')
-
---local autoFarmInfo = autoFarm:text(textData)
---autoFarm:button(dataButton)
---autoFarm:input(inputData)
---autoFarm:slider(sliderData)
---autoFarm:option(optionData)
---autoFarm:UserList(userListData)
-
-
---task.spawn(function()
---	for i = 1, 100, 1 do
---		autoFarmInfo.updateText('Text updated '..i)
---		task.wait(0.1)
---	end
---end)
-
-
-
 

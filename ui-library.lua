@@ -1195,8 +1195,6 @@ end
 function new(name, defaultVisible)
 	-- aplicar validaciones
 	local self = setmetatable({}, poo)
-	local menus = script.Parent:WaitForChild('slide'):WaitForChild('container'):WaitForChild('menus')
-	local navbar = script.Parent:WaitForChild('slide'):WaitForChild('container'):WaitForChild('navbar')
 
 	self.window = library.window(name, menus, navbar, defaultVisible)
 	self.name = name
@@ -1211,4 +1209,3 @@ return {
 		return new(name)
 	end,
 }
-
